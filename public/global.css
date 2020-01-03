@@ -1,0 +1,19 @@
+:root {
+	--dark: #1C0118;
+	--blue: #A6D9F7;
+	--red: #F40000;
+	--light: #FFFFFF;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	width: 100%;
+	height: 100%;
+	font-family: 'Arial', sans-serif;
+	font-size: 18px;
+	background-color: var(--dark);
+}
