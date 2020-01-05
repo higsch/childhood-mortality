@@ -9,7 +9,7 @@
 
   let dataArr, xScale, yScale, line, yLabels;
 
-  function updateScalesAndGenerators() {
+  function updateScalesAndGenerators(radius) {
     xScale = d3.scaleLinear()
       .domain(d3.extent([].concat(...data.map(d => d.dataArr)).map(d => d.year)))
       .range([-radius / 1.5, radius / 1.5]);
@@ -38,7 +38,7 @@
   }
 
   $: if (data && selectedIso) dataArr = data.find(d => d.iso === selectedIso).dataArr.filter(d => !isNaN(d.value));
-  $: if (data && dataArr) updateScalesAndGenerators();
+  $: if (data && dataArr) updateScalesAndGenerators(radius);
 </script>
 
 <g transform="translate({width / 2} {height / 2})">
