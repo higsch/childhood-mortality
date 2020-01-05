@@ -2,7 +2,8 @@
   import * as d3 from 'd3';
 
   import CanvasVisual from './CanvasVisual.svelte';
-  import SVGVisual from './SVGVisual.svelte';
+  import SVGVisualBelow from './SVGVisualBelow.svelte';
+  import SVGVisualOver from './SVGVisualOver.svelte';
 
   export let data;
   export let years;
@@ -11,6 +12,8 @@
   const padding = 50;
   const angleOffset = 0;
   const reductionOffset = 40;
+
+  let selectedIso = 'DEU';
 
   // Dimensions
   let rawWidth = offset;
@@ -46,30 +49,38 @@
   $: minDim = Math.min(width, height);
 
   $: if (data && years) initScales(minDim);
-
-  $: console.log(minDim)
 </script>
 
 <div class="wrapper" bind:offsetWidth={rawWidth} bind:offsetHeight={rawHeight}>
   {#if (minDim > 0)}
+  <SVGVisualBelow width={width}
+                  height={height}
+                  offset={offset}
+                  data={data}
+                  years={years}
+                  scCountryAngle={scCountryAngle}
+                  scYearRadius={scYearRadius}
+                  scReduction={scReduction}
+                  selectedIso={selectedIso} />
   <CanvasVisual width={width}
-                height={height}
-                offset={offset}
-                data={data}
-                years={years}
-                scYearColor={scYearColor}
-                scCountryAngle={scCountryAngle}
-                scYearRadius={scYearRadius}
-                scMortRate={scMortRate}
-                faint={false} />
-  <SVGVisual width={width}
-             height={height}
-             offset={offset}
-             data={data}
-             years={years}
-             scCountryAngle={scCountryAngle}
-             scYearRadius={scYearRadius}
-             scReduction={scReduction} />
+              height={height}
+              offset={offset}
+              data={data}
+              years={years}
+              scYearColor={scYearColor}
+              scCountryAngle={scCountryAngle}
+              scYearRadius={scYearRadius}
+              scMortRate={scMortRate}
+              faint={false} />
+  <SVGVisualOver width={width}
+                 height={height}
+                 offset={offset}
+                 data={data}
+                 years={years}
+                 scCountryAngle={scCountryAngle}
+                 scYearRadius={scYearRadius}
+                 scReduction={scReduction}
+                 selectedIso={selectedIso} />
   {/if}
 </div>
 

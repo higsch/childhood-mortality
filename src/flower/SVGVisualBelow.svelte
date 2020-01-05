@@ -1,4 +1,5 @@
 <script>
+  import Defs from './Defs.svelte';
   import Continents from './Continents.svelte';
   import ReductionPath from './ReductionPath.svelte';
 
@@ -10,11 +11,9 @@
   export let scCountryAngle;
   export let scYearRadius;
   export let scReduction;
+  export let selectedIso;
 
   let continentsData;
-
-  // Elements
-  let defs;
 
   function loadContinentsData() {
     const uniqueContinents = [...new Set(data.map(d => d.continent))];
@@ -36,13 +35,17 @@
      width={width}
      height={height}
      style="margin: {offset / 2}px;">
-  <defs bind:this={defs}></defs>
+  <Defs scReduction={scReduction} />
+  <ReductionPath width={width}
+                 height={height}
+                 data={data}
+                 scCountryAngle={scCountryAngle}
+                 scReduction={scReduction} />
   <Continents width={width}
               height={height}
               data={continentsData}
               years={years}
               scYearRadius={scYearRadius} />
-  <ReductionPath />
 </svg>
 
 <style>
