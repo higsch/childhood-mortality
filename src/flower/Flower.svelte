@@ -13,7 +13,7 @@
   const angleOffset = 0;
   const reductionOffset = 40;
 
-  let selectedIso = 'DEU';
+  let selectedIso;
 
   // Dimensions
   let rawWidth = offset;
@@ -71,7 +71,7 @@
               scCountryAngle={scCountryAngle}
               scYearRadius={scYearRadius}
               scMortRate={scMortRate}
-              faint={false} />
+              selectedIso={selectedIso} />
   <SVGVisualOver width={width}
                  height={height}
                  offset={offset}
@@ -80,7 +80,9 @@
                  scCountryAngle={scCountryAngle}
                  scYearRadius={scYearRadius}
                  scReduction={scReduction}
-                 selectedIso={selectedIso} />
+                 scMortRate={scMortRate}
+                 selectedIso={selectedIso}
+                 on:isochanged={(e) => selectedIso = e.detail} />
   {/if}
 </div>
 

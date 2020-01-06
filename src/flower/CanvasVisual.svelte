@@ -10,7 +10,7 @@
   export let scCountryAngle;
   export let scYearRadius;
   export let scMortRate;
-  export let faint = false;
+  export let selectedIso;
 
   const canvasScaleFactor = 2;
 
@@ -28,9 +28,9 @@
     ctx.translate(width / 2, height / 2);
   }
 
-  function draw(width, height) {
+  function draw(width, height, selectedIso) {
     ctx.clearRect(-width / 2, -height / 2, width, height);
-    ctx.globalAlpha = 0.4;
+    ctx.globalAlpha = selectedIso ? 0.1 : 0.4;
 
     years.forEach(year => {
       ctx.fillStyle = scYearColor(year);
@@ -50,7 +50,7 @@
   });
 
   $: if (ctx) init(width, height);
-  $: if (ctx && data) draw(width, height);
+  $: if (ctx && data) draw(width, height, selectedIso);
 </script>
 
 <canvas class="canvas-visual"
