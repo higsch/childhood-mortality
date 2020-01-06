@@ -27,15 +27,39 @@
 	load();
 </script>
 
-<div id="visual">
-	{#if data}
-		<Flower {data}
-						{years} />
-	{/if}
+<div class="wrapper">
+	<div class="header">
+		<h1>The circle of hope</h1>
+	</div>
+	<div id="visual">
+		{#if data}
+			<Flower {data} {years} />
+		{/if}
+	</div>
 </div>
 
 <style>
+	.wrapper {
+		width: 95%;
+		height: 100%;
+		margin: 0 auto;
+	}
+
+	.header {
+		width: 100%;
+		margin: 1.5rem 0;
+		color: var(--blue);
+	}
+
+	.header h1 {
+		font-family: 'Ibarra Real Nova', serif;
+		font-weight: normal;
+		font-size: calc(3rem + 7px);
+		/* text-align: center; */
+	}
+
 	#visual {
+		position: relative;
 		width: 100%;
 		height: 100%;
 	}

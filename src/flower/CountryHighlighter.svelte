@@ -36,7 +36,7 @@
       .join(enter => enter.append('circle')
                       .attr('class', 'year-circle')
                       .attr('fill', 'white')
-                      .attr('opacity', 0.4)
+                      .attr('opacity', 0.6)
                       .attr('cx', 0)
                       .attr('cy', 0)
                       .attr('r', 0)

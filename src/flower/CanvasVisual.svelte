@@ -26,6 +26,8 @@
 
     ctx.scale(canvasScaleFactor, canvasScaleFactor);
     ctx.translate(width / 2, height / 2);
+
+    ctx.globalCompositeOperation = 'luminosity';
   }
 
   function draw(width, height, selectedIso) {
