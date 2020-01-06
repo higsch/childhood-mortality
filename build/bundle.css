@@ -5,8 +5,8 @@ svg.svelte-x6infa{position:absolute}
 svg.svelte-x6infa{position:absolute}
 g.titles.svelte-10tdcc6 text.svelte-10tdcc6{fill:var(--blue)}circle.mortality-circle.svelte-10tdcc6.svelte-10tdcc6{fill:var(--red);stroke:none;opacity:0.6}
 path.continent-arc.svelte-ho2uh2{fill:var(--blue)}path.continent-label-arc.svelte-ho2uh2{fill:none}textPath.continent-label.svelte-ho2uh2{fill:#A6D9F7;text-anchor:middle;font-family:Arial, sans-serif;font-size:0.7rem}
-text.title.svelte-978731{font-size:0.6rem;text-anchor:middle;fill:white}text.y-label.svelte-978731{font-size:0.8rem;text-anchor:middle;fill:white}line.svelte-978731{stroke:white;stroke-width:1}text.x-label.svelte-978731{font-size:0.6rem;fill:white}
 text.svelte-anfrwp{fill:var(--blue);font-size:0.6rem;text-anchor:middle}
+text.title.svelte-978731{font-size:0.6rem;text-anchor:middle;fill:white}text.y-label.svelte-978731{font-size:0.8rem;text-anchor:middle;fill:white}line.svelte-978731{stroke:white;stroke-width:1}text.x-label.svelte-978731{font-size:0.6rem;fill:white}
 circle.increased{opacity:1;fill:var(--red)}circle.decreased{opacity:1;fill:var(--blue)}
 
 /*# sourceMappingURL=bundle.css.map */
