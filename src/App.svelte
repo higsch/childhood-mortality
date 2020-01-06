@@ -8,7 +8,7 @@
 	let data;
 
 	async function load() {
-		data = await d3.csv('/childhood-mortality/child_mortality.csv', d => {
+		data = await d3.csv('/childhood-mortality/child_mortality.csv', d => { // /childhood-mortality
 			const dataArr = [];
 			const returnObj = {
 				iso: d.iso,

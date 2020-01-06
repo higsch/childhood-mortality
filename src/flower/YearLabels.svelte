@@ -7,7 +7,7 @@
 
 <g transform="translate({width / 2} {height / 2})">
   {#each years as year}
-    <text transform="translate(0 {-scYearRadius(year) + Math.min(width, height) / 30})">{year}</text>
+    <text transform="translate(0 {-scYearRadius(year) + Math.min(width, height) / 22})">{year}</text>
   {/each}
 </g>
 

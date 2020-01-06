@@ -25,14 +25,16 @@
 
     yLabels = [
       {
-        x: xScale(dataArr[0].year),
-        y: yScale(dataArr[0].value) - 10,
-        text: Math.round(dataArr[0].value)
+        x: xScale(dataArr[0].year) * 1.05,
+        y: yScale(dataArr[0].value) + Math.min(width, height) / 200,
+        text: Math.round(dataArr[0].value),
+        textAnchor: 'end'
       },
       {
-        x: xScale(dataArr[dataArr.length - 1].year),
-        y: yScale(dataArr[dataArr.length - 1].value) - 10,
-        text: Math.round(dataArr[dataArr.length - 1].value)
+        x: xScale(dataArr[dataArr.length - 1].year) * 1.05,
+        y: yScale(dataArr[dataArr.length - 1].value) + Math.min(width, height) / 200,
+        text: Math.round(dataArr[dataArr.length - 1].value),
+        textAnchor: 'start'
       }
     ];
   }
@@ -51,7 +53,8 @@
           fill="none"></path>
     {#each yLabels as yLabel}
       <text class="y-label"
-            transform="translate({yLabel.x} {yLabel.y})">{yLabel.text}</text>
+            transform="translate({yLabel.x} {yLabel.y})"
+            text-anchor={yLabel.textAnchor}>{yLabel.text}</text>
     {/each}
     <line x1={xScale.range()[0]}
           y1={yScale.range()[0]}
@@ -67,14 +70,13 @@
 
 <style>
   text.title {
-    font-size: 0.6rem;
+    font-size: calc(0.4rem + 0.5vmin);
     text-anchor: middle;
     fill: white;
   }
 
   text.y-label {
-    font-size: 0.8rem;
-    text-anchor: middle;
+    font-size: 0.7rem;
     fill: white;
   }
   
