@@ -20,8 +20,8 @@
     });
   }
 
-  $: actualWidth = width - offset;
-  $: actualHeight = height - offset;
+  $: actualWidth = Math.max(0, width - offset);
+  $: actualHeight = Math.max(0, height - offset);
   $: titleHeight = actualHeight / 10;
 
   $: if (data) draw(width, height);

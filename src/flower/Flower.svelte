@@ -60,7 +60,7 @@
 <div class="info">
 	<div class="intro" bind:offsetWidth={legendWidth} bind:offsetHeight={legendHeight}>
 		5.3 million children under five <span class="red">died</span> in 2018.
-		This is on average 15,000 children per day.<br />However, the mortality rates are declining for decades.
+		This is on average 15,000 children per day. However, the mortality rates are in fact declining.
     Still 30 years ago, 12.5 million kids <span class="red">died</span> before their fifth birthday.
     Within the last 20 years, the mortality rates fell for every country in the world. Almost.
 	</div>
@@ -115,12 +115,14 @@
 		width: 100%;
 		height: auto;
     color: var(--blue);
-    font-family: 'Ibarra Real Nova', serif;
+    font-family: Arial, sans-serif;
+    font-size: 1.1rem;
   }
   
   @media (max-width: 600px) {
     .info {
       flex-direction: column;
+      font-size: 1.7rem;
     }
   }
 
@@ -129,8 +131,7 @@
   }
 
   .intro {
-    font-size: 1.1rem;
-    line-height: 1.5;
+    line-height: 1.7;
   }
 
 	span.red {

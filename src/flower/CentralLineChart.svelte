@@ -59,7 +59,7 @@
           y2={yScale.range()[0]}></line>
     {#each xScale.domain() as xLabel, i}
       <text class="x-label"
-            transform="translate({xScale(xLabel)} {yScale.range()[0] * 1.2})"
+            transform="translate({xScale(xLabel)} {yScale.range()[0] * 1.25})"
             text-anchor={i % 2 === 0 ? 'start' : 'end'}>{xLabel}</text>
     {/each}
   </g>
