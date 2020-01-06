@@ -9,9 +9,7 @@
   export let years;
 
   const offset = 10;
-  const padding = 50;
   const angleOffset = 0;
-  const reductionOffset = 40;
 
   let selectedIso;
 
@@ -33,7 +31,7 @@
 
     scYearRadius = d3.scaleLinear()
       .domain([years[0], years[years.length - 1]])
-      .range([minDim / 5, minDim / 2.6 - padding]);
+      .range([minDim / 5, minDim / 2.4 - padding]);
 
     scMortRate = d3.scaleLinear()
       .domain([0, 1.2 * d3.max([].concat(...data.map(d => d.dataArr.filter(d => years.includes(d.year)).map(d => d.value))))])
@@ -47,9 +45,13 @@
   $: width = rawWidth - offset;
   $: height = rawHeight - offset;
   $: minDim = Math.min(width, height);
+  $: padding = minDim / 40;
+  $: reductionOffset = minDim / 40;
 
   $: if (data && years) initScales(minDim);
 </script>
+
+<svelte:body on:click={() => selectedIso = undefined}/>
 
 <div class="wrapper" bind:offsetWidth={rawWidth} bind:offsetHeight={rawHeight}>
   {#if (minDim > 0)}

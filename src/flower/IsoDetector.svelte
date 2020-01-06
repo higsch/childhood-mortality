@@ -27,7 +27,8 @@
           fill="transparent"
           stroke="none"
           on:mousemove={detectIso}
-          on:mouseout={() => dispatch(eventName, undefined)}></circle>
+          on:mouseout={() => dispatch(eventName, undefined)}
+          on:click|stopPropagation={detectIso}></circle>
 </g>
 
 <style>

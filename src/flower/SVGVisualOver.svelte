@@ -1,5 +1,6 @@
 <script>
   import Defs from './Defs.svelte';
+  import YearLabels from './YearLabels.svelte';
   import CentralLineChart from './CentralLineChart.svelte';
   import CountryLabels from './CountryLabels.svelte';
   import CountryHighlighter from './CountryHighlighter.svelte';
@@ -25,11 +26,15 @@
      height={height}
      style="margin: {offset / 2}px;">
   <Defs scReduction={scReduction} />
+  <YearLabels width={width}
+              height={height}
+              years={years}
+              scYearRadius={scYearRadius} />
   <CentralLineChart width={width}
                     height={height}
                     data={data}
                     selectedIso={selectedIso}
-                    radius={innerRadius}></CentralLineChart>
+                    radius={innerRadius} />
   <CountryLabels width={width}
                  height={height}
                  data={data.map(d => ({iso: d.iso, country: d.country}))}
@@ -44,13 +49,13 @@
                       scYearRadius={scYearRadius}
                       scMortRate={scMortRate}
                       scReduction={scReduction}
-                      selectedIso={selectedIso}></CountryHighlighter>
+                      selectedIso={selectedIso} />
   <IsoDetector width={width}
                height={height}
                radius={scReduction.range()[1]}
                scCountryAngle={scCountryAngle}
                selectedIso={selectedIso}
-               on:isochanged></IsoDetector>
+               on:isochanged />
 </svg>
 
 <style>
