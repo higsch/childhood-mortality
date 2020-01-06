@@ -67,10 +67,12 @@
                         .attr('cx', d => d.cx)
                         .attr('cy', d => d.cy)
                         .attr('r', d => d.r)),
-            update => update.transition().duration(100)
-                        .attr('cx', d => d.cx)
-                        .attr('cy', d => d.cy)
-                        .attr('r', d => d.r),
+            update => update
+                        .attr('class', `reduction-circle ${reduction <= 0 ? 'decreased' : 'increased'}`)
+                        .transition().duration(100)
+                          .attr('cx', d => d.cx)
+                          .attr('cy', d => d.cy)
+                          .attr('r', d => d.r),
             exit => exit.transition().duration(100)
                       .attr('cx', 0)
                       .attr('cy', 0)

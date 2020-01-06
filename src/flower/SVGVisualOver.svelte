@@ -1,6 +1,7 @@
 <script>
   import Defs from './Defs.svelte';
   import CentralLineChart from './CentralLineChart.svelte';
+  import CountryLabels from './CountryLabels.svelte';
   import CountryHighlighter from './CountryHighlighter.svelte';
   import IsoDetector from './IsoDetector.svelte';
 
@@ -16,6 +17,7 @@
   export let selectedIso;
 
   $: innerRadius = scYearRadius(years[0]) * 0.62;
+  $: countryRadius = scReduction.range()[1];
 </script>
 
 <svg class="svg-visual"
@@ -28,6 +30,12 @@
                     data={data}
                     selectedIso={selectedIso}
                     radius={innerRadius}></CentralLineChart>
+  <CountryLabels width={width}
+                 height={height}
+                 data={data.map(d => ({iso: d.iso, country: d.country}))}
+                 scCountryAngle={scCountryAngle}
+                 radius={countryRadius}
+                 selectedIso={selectedIso} />
   <CountryHighlighter width={width}
                       height={height}
                       data={data}
