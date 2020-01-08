@@ -18,8 +18,6 @@
   // Dimensions
   let rawWidth = offset;
   let rawHeight = offset;
-  let legendWidth = 0;
-  let legendHeight = 0;
 
   // Scales
   let scYearColor, scCountryAngle, scYearRadius, scMortRate, scReduction;
@@ -58,18 +56,29 @@
 <svelte:body on:click={() => selectedIso = undefined}/>
 
 <div class="info">
-	<div class="intro" bind:offsetWidth={legendWidth} bind:offsetHeight={legendHeight}>
-		5.3 million children under five <span class="red">died</span> in 2018.
-		This is on average 15,000 children per day. However, the mortality rates are in fact declining.
-    Still 30 years ago, 12.5 million kids <span class="red">died</span> before their fifth birthday.
-    Within the last 20 years, the mortality rates fell for every country in the world. Almost.
+	<div class="intro">
+    <div class="text">
+      5.3 million children under five <span class="red">died</span> in 2018.
+      This is on average 15,000 children per day. However, the mortality rates are in fact declining.
+      Still 30 years ago, 12.5 million kids <span class="red">died</span> before their fifth birthday.
+      Within the last 20 years, the mortality rates fell for every country in the world. Almost.
+    </div>
+    <div class="tour">
+      <div class="tour-title">Take a tour to these countries:</div>
+      <div class="tour-countries">
+        
+      </div>
+    </div>
 	</div>
 	<div class="legend">
-    <Legend width={legendWidth}
-            height={legendHeight}
-            data={data}
+    <Legend data={data}
             scMortRate={scMortRate}
             scReduction={scReduction} />
+    <div class="data-info">Median under five-year mortality rates are taken from the <a href="https://data.unicef.org/topic/child-survival/under-five-mortality/">official resource</a> of the UN Inter-agency Group for Child Mortality Estimation.</div>
+    <div class="imprint">
+      <img src="/logo.svg" alt="higsch-logo" />
+      Higsch Data Visuals,&nbsp; <a href="https://www.linkedin.com/in/matthias-stahl/">Matthias Stahl</a>, 2020
+    </div>
 	</div>
 </div>
 <div class="wrapper" bind:offsetWidth={rawWidth} bind:offsetHeight={rawHeight}>
@@ -128,15 +137,39 @@
 
   .info > div {
     flex: 1;
+    width: 100%;
+    height: 100%;
   }
 
   .intro {
+    display: flex;
+    flex-direction: column;
     line-height: 1.7;
   }
 
-	span.red {
-		color: var(--red);
-	}
+  .tour {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem 0 0 0;
+  }
+  
+  .data-info {
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  .imprint {
+    display: flex;
+    margin: 1rem 0;
+    align-items: center;
+    font-size: 0.7rem;
+  }
+
+  .imprint img {
+    width: 1.7rem;
+    margin: 0 0.6rem 0 0;
+  }
 
   .wrapper {
     width: 100%;
