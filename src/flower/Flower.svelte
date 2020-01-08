@@ -120,25 +120,24 @@
   .info {
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     align-items: stretch;
+    justify-content: space-between;
 		width: 100%;
 		height: auto;
     color: var(--blue);
     font-family: Arial, sans-serif;
-    font-size: 1.1rem;
-  }
-  
-  @media (max-width: 600px) {
-    .info {
-      flex-direction: column;
-      font-size: 1.7rem;
-    }
   }
 
   .info > div {
-    flex: 1;
-    width: 100%;
+    width: 47%;
     height: 100%;
+  }
+
+  @media (max-width: 600px) {
+    .info > div {
+      width: 100%;
+    }
   }
 
   .intro {
