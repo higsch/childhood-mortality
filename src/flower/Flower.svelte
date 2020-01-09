@@ -76,7 +76,7 @@
             scReduction={scReduction} />
     <div class="data-info">Median under five-year mortality rates are taken from the <a href="https://data.unicef.org/topic/child-survival/under-five-mortality/">official resource</a> of the UN Inter-agency Group for Child Mortality Estimation.</div>
     <div class="imprint">
-      <img src="/childhood-mortality/logo.svg" alt="higsch-logo" />
+      <img src="/logo.svg" alt="higsch-logo" />
       Higsch Data Visuals,&nbsp; <a href="https://www.linkedin.com/in/matthias-stahl/">Matthias Stahl</a>, 2020
     </div>
 	</div>
