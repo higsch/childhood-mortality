@@ -146,6 +146,10 @@
     line-height: 1.7;
   }
 
+  .text {
+    text-align: justify;
+  }
+
   .tour {
     display: flex;
     flex-direction: column;
