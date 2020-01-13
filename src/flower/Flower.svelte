@@ -52,6 +52,8 @@
   $: reductionOffset = minDim / 40;
 
   $: if (data && years) initScales(minDim);
+
+  $: console.log(selectedIso);
 </script>
 
 <svelte:body on:click={() => selectedIso = undefined}/>
@@ -67,7 +69,7 @@
     <div class="tour">
       <div class="tour-title">Take a tour to these countries:</div>
       <div class="tour-countries">
-        <Tour />
+        <Tour data={data} />
       </div>
     </div>
 	</div>

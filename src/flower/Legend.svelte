@@ -62,8 +62,8 @@
         </linearGradient>
       </defs>
       <g class="titles" transform="translate(0 {titleHeight})">
-        <text>deaths / 1,000 births</text>
-        <text transform="translate({xScale.range()[0]} 0)">Change from 1998 to 2018</text>
+        <text>Deaths / 1,000 births</text>
+        <text transform="translate({xScale.range()[0]} 0)">Deaths from 1998 to 2018</text>
       </g>
       <g class="mortality-circles" transform="translate(0 0)">
         {#each mortalityCircles as d}
@@ -79,9 +79,9 @@
               d={reductionPath(reductionData)}
               fill="url(#legend-reduction-gradient)" />
         <text class="reduction-label red"
-              transform="translate({(xScale.range()[0] + xScale.range()[1]) / 2} {yScale.range()[1] - 7})">increased</text>
+              transform="translate({xScale.range()[0] + 5} {yScale.range()[1] + 15})">increased</text>
         <text class="reduction-label blue"
-              transform="translate({(xScale.range()[0] + xScale.range()[1]) / 2} {yScale.range()[0] + 7})">decreased</text>
+              transform="translate({xScale.range()[0] + 5} {yScale.range()[0] + 7})">decreased</text>
       </g>
     {/if}
   </svg>
@@ -117,7 +117,7 @@
 
   text.reduction-label {
     font-size: 0.7rem;
-    text-anchor: middle;
+    text-anchor: start;
   }
 
   .red {
