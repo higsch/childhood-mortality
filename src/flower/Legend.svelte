@@ -39,7 +39,7 @@
       .curve(d3.curveCardinal);
   }
 
-  $: titleHeight = height * 0.1;
+  $: titleHeight = mortalityCircles[0].cy - mortalityCircles[0].r - 30;
   $: reductionData = [...data.slice(55, 65), data[55]];
   $: if (mortalityCircles && reductionData) setupScales(width, height);
   $: if (xScale && yScale && reductionPath) scalesSet = true;
@@ -63,6 +63,7 @@
       </defs>
       <g class="titles" transform="translate(0 {titleHeight})">
         <text>deaths / 1,000 births</text>
+        <text transform="translate({xScale.range()[0]} 0)">Change from 1998 to 2018</text>
       </g>
       <g class="mortality-circles" transform="translate(0 0)">
         {#each mortalityCircles as d}
@@ -74,10 +75,13 @@
         {/each}
       </g>
       <g class="reduction">
-        
         <path class="reduction-path"
               d={reductionPath(reductionData)}
               fill="url(#legend-reduction-gradient)" />
+        <text class="reduction-label red"
+              transform="translate({(xScale.range()[0] + xScale.range()[1]) / 2} {yScale.range()[1] - 7})">increased</text>
+        <text class="reduction-label blue"
+              transform="translate({(xScale.range()[0] + xScale.range()[1]) / 2} {yScale.range()[0] + 7})">decreased</text>
       </g>
     {/if}
   </svg>
@@ -93,7 +97,7 @@
   }
 
   g.titles {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
 
   circle.mortality-circle {
@@ -103,11 +107,24 @@
   }
 
   text.mortality-labels {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     text-anchor: middle;
   }
 
   path.reduction-path {
     stroke: none;
+  }
+
+  text.reduction-label {
+    font-size: 0.7rem;
+    text-anchor: middle;
+  }
+
+  .red {
+    fill: var(--red);
+  }
+
+  .blue {
+    fill: var(--blue);
   }
 </style>

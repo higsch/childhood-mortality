@@ -4,6 +4,7 @@
   import CanvasVisual from './CanvasVisual.svelte';
   import SVGVisualBelow from './SVGVisualBelow.svelte';
   import SVGVisualOver from './SVGVisualOver.svelte';
+  import Tour from './Tour.svelte';
 
   import Legend from './Legend.svelte';
 
@@ -66,11 +67,12 @@
     <div class="tour">
       <div class="tour-title">Take a tour to these countries:</div>
       <div class="tour-countries">
-        
+        <Tour />
       </div>
     </div>
 	</div>
 	<div class="legend">
+    <div class="text">How to read this chart:</div>
     <Legend data={data}
             scMortRate={scMortRate}
             scReduction={scReduction} />
@@ -126,28 +128,29 @@
 		width: 100%;
 		height: auto;
     color: var(--blue);
-    font-family: Arial, sans-serif;
   }
 
   .info > div {
     width: 47%;
     height: 100%;
+    margin-bottom: 0;
   }
 
   @media (max-width: 600px) {
     .info > div {
       width: 100%;
+      margin-bottom: 1.5rem;
     }
   }
 
   .intro {
     display: flex;
     flex-direction: column;
-    line-height: 1.7;
   }
 
   .text {
     text-align: justify;
+    line-height: 1.7;
   }
 
   .tour {

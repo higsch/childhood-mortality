@@ -46,7 +46,7 @@
         .attr('class', 'country-label')
         .append('textPath')
           .attr('href', d => `#country-label-path-${d.iso}`)
-          .attr('font-size', '1rem')
+          .attr('font-size', '0.9rem')
           .attr('text-anchor', 'middle')
           .attr('startOffset', d => `${d.angle > Math.PI / 2 && d.angle < 1.5 * Math.PI ? '75%' : '25%'}`)
           .attr('fill', 'white')
