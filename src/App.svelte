@@ -1,6 +1,7 @@
 <script>
 	import * as d3 from 'd3';
 
+  import CookieBanner from './CookieBanner.svelte';
 	import Flower from './flower/Flower.svelte';
 
 	const years = [1998, 2008, 2018];
@@ -28,6 +29,7 @@
 </script>
 
 <div class="wrapper">
+  <CookieBanner />
 	<div class="header">
 		<h1>The circle of hope</h1>
 	</div>

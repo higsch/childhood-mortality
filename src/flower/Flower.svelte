@@ -52,8 +52,6 @@
   $: reductionOffset = minDim / 40;
 
   $: if (data && years) initScales(minDim);
-
-  $: console.log(selectedIso);
 </script>
 
 <svelte:body on:click={() => selectedIso = undefined}/>
@@ -67,10 +65,10 @@
       Within the last 20 years, the mortality rates fell for every country in the world. Almost.
     </div>
     <div class="tour">
-      <div class="tour-title">Take a tour to these countries:</div>
+      <!--<div class="tour-title">Take a tour to these countries:</div>
       <div class="tour-countries">
         <Tour data={data} />
-      </div>
+      </div>-->
     </div>
 	</div>
 	<div class="legend">
