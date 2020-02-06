@@ -57,7 +57,7 @@
 <svelte:body on:click={() => selectedIso = undefined}/>
 
 <div class="info">
-	<div class="intro">
+  <div class="intro">
     <div class="text">
       5.3 million children under five <span class="red">died</span> in 2018.
       This is on average 15,000 children per day. However, the mortality rates are in fact declining.
@@ -70,8 +70,8 @@
         <Tour data={data} />
       </div>-->
     </div>
-	</div>
-	<div class="legend">
+  </div>
+  <div class="legend">
     <div class="text">How to read this chart:</div>
     <Legend data={data}
             scMortRate={scMortRate}
@@ -81,7 +81,7 @@
       <img src="logo.svg" alt="higsch-logo" />
       Higsch Data Visuals,&nbsp; <a href="https://www.linkedin.com/in/matthias-stahl/">Matthias Stahl</a>, 2020
     </div>
-	</div>
+  </div>
 </div>
 <div class="wrapper" bind:offsetWidth={rawWidth} bind:offsetHeight={rawHeight}>
   {#if (minDim > 0)}
@@ -125,8 +125,8 @@
     flex-wrap: wrap;
     align-items: stretch;
     justify-content: space-between;
-		width: 100%;
-		height: auto;
+    width: 100%;
+    height: auto;
     color: var(--blue);
   }
 
