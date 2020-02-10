@@ -44,5 +44,6 @@
     background-color: var(--blue);
     border: none;
     border-radius: 0.5vmin;
+    -webkit-appearance: none;
   }
 </style>
