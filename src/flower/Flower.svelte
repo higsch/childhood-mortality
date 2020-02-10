@@ -4,7 +4,7 @@
   import CanvasVisual from './CanvasVisual.svelte';
   import SVGVisualBelow from './SVGVisualBelow.svelte';
   import SVGVisualOver from './SVGVisualOver.svelte';
-  import Tour from './Tour.svelte';
+  import CountrySearch from './CountrySearch.svelte';
 
   import Legend from './Legend.svelte';
 
@@ -64,24 +64,29 @@
       Still 30 years ago, 12.5 million kids <span class="red">died</span> before their fifth birthday.
       Within the last 20 years, the mortality rates fell for every country in the world. Almost.
     </div>
-    <div class="tour">
-      <!--<div class="tour-title">Take a tour to these countries:</div>
-      <div class="tour-countries">
-        <Tour data={data} />
-      </div>-->
-    </div>
+    {#if (width > 600)}
+      <div class="search">
+        <CountrySearch data={data}
+                      on:isochanged={(e) => selectedIso = e.detail}/>
+      </div>
+    {/if}
   </div>
   <div class="legend">
     <div class="text">How to read this chart:</div>
     <Legend data={data}
-            scMortRate={scMortRate}
-            scReduction={scReduction} />
+            scMortRate={scMortRate} />
     <div class="data-info">Median under five-year mortality rates are taken from the <a href="https://data.unicef.org/topic/child-survival/under-five-mortality/">official resource</a> of the UN Inter-agency Group for Child Mortality Estimation.</div>
     <div class="imprint">
       <img src="logo.svg" alt="higsch-logo" />
       Higsch Data Visuals,&nbsp; <a href="https://www.linkedin.com/in/matthias-stahl/">Matthias Stahl</a>, 2020
     </div>
   </div>
+  {#if (width <= 600)}
+    <div class="search small">
+      <CountrySearch data={data}
+                    on:isochanged={(e) => selectedIso = e.detail}/>
+    </div>
+  {/if}
 </div>
 <div class="wrapper" bind:offsetWidth={rawWidth} bind:offsetHeight={rawHeight}>
   {#if (minDim > 0)}
@@ -92,8 +97,7 @@
                   years={years}
                   scCountryAngle={scCountryAngle}
                   scYearRadius={scYearRadius}
-                  scReduction={scReduction}
-                  selectedIso={selectedIso} />
+                  scReduction={scReduction} />
   <CanvasVisual width={width}
               height={height}
               offset={offset}
@@ -153,10 +157,14 @@
     line-height: 1.7;
   }
 
-  .tour {
+  .search {
     display: flex;
     flex-direction: column;
-    margin: 1rem 0 0 0;
+    margin: 2rem 0 0 0;
+  }
+
+  .search.small {
+    align-items: center;
   }
   
   .data-info {

@@ -3,7 +3,6 @@
 
   export let data;
   export let scMortRate;
-  export let scReduction;
 
   let width = 0;
   let height = 0;

@@ -11,7 +11,6 @@
   export let scCountryAngle;
   export let scYearRadius;
   export let scReduction;
-  export let selectedIso;
 
   let continentsData;
 
