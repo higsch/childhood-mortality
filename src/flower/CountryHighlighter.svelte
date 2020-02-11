@@ -1,5 +1,6 @@
 <script>
   import { select } from 'd3-selection';
+  import { transition } from 'd3-transition';
 
   export let width;
   export let height;
