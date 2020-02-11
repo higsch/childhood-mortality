@@ -1,5 +1,5 @@
 <script>
-  import * as d3 from 'd3';
+  import { arc as d3arc } from 'd3-shape';
 
   export let width;
   export let height;
@@ -16,14 +16,14 @@
   // The arcs
   function defineArcs() {
     const innerAreaRadius = scYearRadius(years[0]) * shrinkFactor;
-    arc = d3.arc()
+    arc = d3arc()
       .startAngle(d => d.startAngle)
       .endAngle(d => d.endAngle)
       .innerRadius(innerAreaRadius)
       .outerRadius(innerAreaRadius * lineThicknessFactor)
       .cornerRadius(7);
 
-    labelArc = d3.arc()
+    labelArc = d3arc()
       .startAngle(d => d.startAngle)
       .endAngle(d => d.endAngle)
       .innerRadius(innerAreaRadius * labelOffsetFactor)

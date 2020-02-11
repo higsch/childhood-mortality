@@ -1,5 +1,6 @@
 <script>
-  import * as d3 from 'd3';
+  import { arc as d3arc } from 'd3-shape';
+  import { select } from 'd3-selection';
 
   export let width;
   export let height;
@@ -8,7 +9,7 @@
   export let radius;
   export let selectedIso;
 
-  const countryLabelArc = d3.arc()
+  const countryLabelArc = d3arc()
     .startAngle(d => d.angle - Math.PI)
     .endAngle(d => d.angle + Math.PI)
     .innerRadius(d => d.radius)
@@ -31,7 +32,7 @@
       }];
     }
 
-    d3.select(container).selectAll('.country-label-path')
+    select(container).selectAll('.country-label-path')
       .data(model)
       .join('path')
         .attr('class', 'country-label-path')
@@ -40,7 +41,7 @@
         .attr('fill', 'none')
         .attr('stroke', 'none');
 
-    d3.select(container).selectAll('.country-label')
+    select(container).selectAll('.country-label')
       .data(model)
       .join('text')
         .attr('class', 'country-label')

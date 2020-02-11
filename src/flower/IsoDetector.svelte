@@ -1,6 +1,6 @@
 <script>
   import { createEventDispatcher } from 'svelte';
-  import * as d3 from 'd3';
+  import { bisect } from 'd3-array';
 
   import { getCentralAngle } from '../utils.js';
 
@@ -15,7 +15,7 @@
 
   function detectIso(e) {
     const angle = getCentralAngle(e.layerX, e.layerY, width, height);
-    const iso = scCountryAngle.domain()[d3.bisect(scCountryAngle.range(), angle) - 1];
+    const iso = scCountryAngle.domain()[bisect(scCountryAngle.range(), angle) - 1];
     if (iso !== selectedIso) dispatch(eventName, iso);
   }
 </script>

@@ -1,5 +1,5 @@
 <script>
-  import * as d3 from 'd3';
+  import { select } from 'd3-selection';
 
   export let width;
   export let height;
@@ -31,7 +31,7 @@
     }
 
     // the three year highlighters
-    d3.select(container).selectAll('.year-circle')
+    select(container).selectAll('.year-circle')
       .data(modelYears)
       .join(enter => enter.append('circle')
                       .attr('class', 'year-circle')
@@ -56,7 +56,7 @@
       );
 
     // the reduction highlighter
-    d3.select(container).selectAll('.reduction-circle')
+    select(container).selectAll('.reduction-circle')
       .data(modelReduction)
       .join(enter => enter.append('circle')
                       .attr('class', `reduction-circle ${reduction <= 0 ? 'decreased' : 'increased'}`)

@@ -1,5 +1,7 @@
 <script>
-  import * as d3 from 'd3';
+  import { extent, max } from 'd3-array';
+  import { scaleLinear } from 'd3-scale';
+  import { line as d3line, curveCardinal } from 'd3-shape';
 
   export let width;
   export let height;
@@ -10,18 +12,18 @@
   let dataArr, xScale, yScale, line, yLabels;
 
   function updateScalesAndGenerators(radius) {
-    xScale = d3.scaleLinear()
-      .domain(d3.extent([].concat(...data.map(d => d.dataArr)).map(d => d.year)))
+    xScale = scaleLinear()
+      .domain(extent([].concat(...data.map(d => d.dataArr)).map(d => d.year)))
       .range([-radius / 1.5, radius / 1.5]);
 
-    yScale = d3.scaleLinear()
-      .domain([-10, d3.max([].concat(...data.map(d => d.dataArr)).map(d => d.value))])
+    yScale = scaleLinear()
+      .domain([-10, max([].concat(...data.map(d => d.dataArr)).map(d => d.value))])
       .range([radius / 2, -radius / 2]);
       
-    line = d3.line()
+    line = d3line()
       .x(d => xScale(d.year))
       .y(d => yScale(d.value))
-      .curve(d3.curveCardinal);
+      .curve(curveCardinal);
 
     yLabels = [
       {

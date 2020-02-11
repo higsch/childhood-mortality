@@ -50,7 +50,12 @@ export default {
 	],
 	watch: {
 		clearScreen: false
-	}
+  },
+  onwarn: (warning) => {
+    if (warning.code !== 'CIRCULAR_DEPENDENCY') {
+        console.error(`(!) ${warning.message}`);
+    }
+  }
 };
 
 function serve() {

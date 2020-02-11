@@ -1,5 +1,5 @@
 <script>
-  import * as d3 from 'd3';
+  import { csv } from 'd3-fetch';
 
   import CookieBanner from './CookieBanner.svelte';
   import Flower from './flower/Flower.svelte';
@@ -9,7 +9,7 @@
   let data;
 
   async function load() {
-    data = await d3.csv('child_mortality.csv', d => { // /childhood-mortality
+    data = await csv('child_mortality.csv', d => { // /childhood-mortality
       const dataArr = [];
       const returnObj = {
         iso: d.iso,

@@ -1,5 +1,6 @@
 <script>
-  import * as d3 from 'd3';
+  import { range, max, extent } from 'd3-array';
+  import { scaleLinear, scaleOrdinal } from 'd3-scale';
 
   import CanvasVisual from './CanvasVisual.svelte';
   import SVGVisualBelow from './SVGVisualBelow.svelte';
@@ -24,24 +25,24 @@
   let scYearColor, scCountryAngle, scYearRadius, scMortRate, scReduction;
 
   function initScales(minDim) {
-    scYearColor = d3.scaleOrdinal()
+    scYearColor = scaleOrdinal()
       .domain(years)
       .range(['#F40000', 'rgb(236, 54, 9)', 'rgb(245, 120, 86)']);
 
-    scCountryAngle = d3.scaleOrdinal()
+    scCountryAngle = scaleOrdinal()
       .domain(data.map(d => d.iso))
-      .range(d3.range(angleOffset, 2 * Math.PI - angleOffset, (2 * Math.PI - 2 * angleOffset) / data.length));
+      .range(range(angleOffset, 2 * Math.PI - angleOffset, (2 * Math.PI - 2 * angleOffset) / data.length));
 
-    scYearRadius = d3.scaleLinear()
+    scYearRadius = scaleLinear()
       .domain([years[0], years[years.length - 1]])
       .range([minDim / 5, minDim / 2.4 - padding]);
 
-    scMortRate = d3.scaleLinear()
-      .domain([0, 1.2 * d3.max([].concat(...data.map(d => d.dataArr.filter(d => years.includes(d.year)).map(d => d.value))))])
+    scMortRate = scaleLinear()
+      .domain([0, 1.2 * max([].concat(...data.map(d => d.dataArr.filter(d => years.includes(d.year)).map(d => d.value))))])
       .range([0, minDim / 9]);
 
-    scReduction = d3.scaleLinear()
-      .domain(d3.extent(data.map(d => d.reduction)))
+    scReduction = scaleLinear()
+      .domain(extent(data.map(d => d.reduction)))
       .range([Math.min(scYearRadius(years[years.length - 1]) + reductionOffset, minDim / 2 - padding), minDim / 2 - padding]);
   }
 

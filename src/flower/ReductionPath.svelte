@@ -1,5 +1,5 @@
 <script>
-  import * as d3 from 'd3';
+  import { lineRadial, curveCardinal } from 'd3-shape';
 
   export let width;
   export let height;
@@ -8,10 +8,10 @@
   export let scReduction;
 
   // the path generator
-  $: path = d3.lineRadial()
+  $: path = lineRadial()
     .angle(d => scCountryAngle(d.iso))
     .radius(d => scReduction(d.reduction))
-    .curve(d3.curveCardinal);
+    .curve(curveCardinal);
 
 </script>
 

@@ -1,5 +1,7 @@
 <script>
-  import * as d3 from 'd3';
+  import { extent } from 'd3-array';
+  import { scaleLinear } from 'd3-scale';
+  import { line as d3line, curveCardinal } from 'd3-shape';
 
   export let data;
   export let scMortRate;
@@ -24,18 +26,18 @@
   function setupScales(width, height) {
     if (width === 0 || height === 0) return;
 
-    xScale = d3.scaleLinear()
+    xScale = scaleLinear()
       .domain([0, 10])
       .range([mortalityCircles[mortalityCircles.length - 1].cx + width / 15, width - width / 20]);
 
-    yScale = d3.scaleLinear()
-      .domain(d3.extent(reductionData.map(d => d.reduction)))
+    yScale = scaleLinear()
+      .domain(extent(reductionData.map(d => d.reduction)))
       .range([height * 2/3, height / 3]);
 
-    reductionPath = d3.line()
+    reductionPath = d3line()
       .x((_, i) => xScale(i))
       .y(d => yScale(d.reduction))
-      .curve(d3.curveCardinal);
+      .curve(curveCardinal);
   }
 
   $: titleHeight = mortalityCircles[0].cy - mortalityCircles[0].r - 30;
