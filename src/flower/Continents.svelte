@@ -59,6 +59,6 @@
     fill: #A6D9F7;
     text-anchor: middle;
     font-family: Arial, sans-serif;
-    font-size: 0.6rem;
+    font-size: 0.55rem;
   }
 </style>
