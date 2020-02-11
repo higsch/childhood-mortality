@@ -14,7 +14,7 @@
   const eventName = 'isochanged';
 
   function detectIso(e) {
-    const angle = getCentralAngle(e.offsetX, e.offsetY, width, height);
+    const angle = getCentralAngle(e.layerX, e.layerY, width, height);
     const iso = scCountryAngle.domain()[d3.bisect(scCountryAngle.range(), angle) - 1];
     if (iso !== selectedIso) dispatch(eventName, iso);
   }
