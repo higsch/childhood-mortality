@@ -11,6 +11,13 @@ data <- read_delim(file = file.path("data", "mortality_rates.csv"),
 
 colnames(data) <- gsub(pattern = ",5", replacement = "", x = colnames(data))
 
+# export cleaned data for workshop
+data %>%
+  filter(`Uncertainty bounds*` == "Median") %>%
+  select(iso = `ISO Code`, matches("^1|2")) %>%
+  write_csv(file = file.path(output_folder, "mortality_rates_clean.csv"))
+
+# tidy
 data %>%
   filter(`Uncertainty bounds*` == "Median") %>%
   select(iso = `ISO Code`, matches("^1|2")) %>%
